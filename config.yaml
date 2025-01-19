@@ -1,0 +1,255 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emergencyapi-deployment
+spec:
+  selector:
+    matchLabels:
+      app: emergencyapi
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: emergencyapi
+    spec:
+      containers:
+      - name: emergencyapi
+        image: reg.evalynnlunak.tech/emergencyapi:latest
+        ports:
+        - containerPort: 8080
+        env: 
+          - name: ASPNETCORE_HTTP_PORTS
+            value: "8080"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: emergencyapi-service
+spec:
+  selector:
+    app: emergencyapi
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: formfrontend-deployment
+spec:
+  selector:
+    matchLabels:
+      app: formfrontend
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: formfrontend
+    spec:
+      containers:
+      - name: formfrontend
+        image: reg.evalynnlunak.tech/formfrontend:latest
+        ports:
+        - containerPort: 8080
+        env: 
+          - name: ASPNETCORE_HTTP_PORTS
+            value: "8080"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: formfrontend-service
+spec:
+  selector:
+    app: formfrontend
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer
+---
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: formfrontend-deployment
+spec:
+  selector:
+    matchLabels:
+      app: formfrontend
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: formfrontend
+    spec:
+      containers:
+      - name: formfrontend
+        image: reg.evalynnlunak.tech/formfrontend:latest
+        ports:
+        - containerPort: 8080
+        env: 
+          - name: ASPNETCORE_HTTP_PORTS
+            value: "8080"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: formfrontend-service
+spec:
+  selector:
+    app: formfrontend
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer
+---
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: formfrontend-deployment
+spec:
+  selector:
+    matchLabels:
+      app: formfrontend
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: formfrontend
+    spec:
+      containers:
+      - name: formfrontend
+        image: reg.evalynnlunak.tech/formfrontend:latest
+        ports:
+        - containerPort: 8080
+        env: 
+          - name: ASPNETCORE_HTTP_PORTS
+            value: "8080"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: formfrontend-service
+spec:
+  selector:
+    app: formfrontend
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: formfrontend-service
+spec:
+  selector:
+    app: formfrontend
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashboardfrontend-deployment
+spec:
+  selector:
+    matchLabels:
+      app: dashboardfrontend
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: dashboardfrontend
+    spec:
+      containers:
+      - name: dashboardfrontend
+        image: reg.evalynnlunak.tech/dashboardfrontend:latest
+        ports:
+        - containerPort: 8080
+        env: 
+          - name: ASPNETCORE_HTTP_PORTS
+            value: "8080"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dashboardfrontend-service
+spec:
+  selector:
+    app: dashboardfrontend
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aiservice-deployment
+spec:
+  selector:
+    matchLabels:
+      app: aiservice
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: aiservice
+    spec:
+      containers:
+      - name: aiservice
+        image: reg.evalynnlunak.tech/aiservice:latest
+        ports:
+        - containerPort: 8080
+        env: 
+          - name: ASPNETCORE_HTTP_PORTS
+            value: "8080"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aiservice-service
+spec:
+  selector:
+    app: aiservice
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer
+---
+#apiVersion: networking.k8s.io/v1
+#kind: Ingress
+#metadata:
+  #name: example-ingress
+#spec:
+ # rules:
+   # - #http:
+    #    paths:
+    #      - pathType: Prefix
+    #        path: /emergencyapi
+     #       backend:
+     #         service:
+    #            name: emergencyapi-service
+   #            port:
+    #              number: 8080
+    #      - pathType: Prefix
+    #        path: /frontend
+    #        backend:
+      #        service:
+    #            name: frontend-service
+     #           port:
+     #             number: 8080
+---
+
